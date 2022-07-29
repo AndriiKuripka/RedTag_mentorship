@@ -16,18 +16,18 @@ public with sharing class AccountService {
         Map<Id, String> mapUpdatedAccName = new Map<Id,String>();
         for (Account acc : newAccountList) {
             if (acc.Name != mapOldAccounts.get(acc.Id).Name) {
-                mapUpdatedAccName.put(acc.Id, acc.Name);    
+                mapUpdatedAccName.put(acc.Id, String.format(System.Label.OppName, new List<Object>{ acc.Name, acc.CreatedDate.format(System.Label.DateFormat) }));    
             }
         }
-        List<Opportunity> oppsToUpdate = new List<Opportunity>([SELECT Id, Name, AccountId, CreatedDate FROM Opportunity WHERE AccountId IN: mapUpdatedAccName.keySet()]);
+        List<Opportunity> oppsToUpdate = [SELECT Id, Name, AccountId, CreatedDate FROM Opportunity WHERE AccountId IN: mapUpdatedAccName.keySet()];
         for (Opportunity opp : oppsToUpdate) {
-            opp.Name = String.format(System.Label.OppName, new List<Object>{ mapUpdatedAccName.get(opp.AccountId), opp.CreatedDate.format(System.Label.DateFormat) });
+            opp.Name = mapUpdatedAccName.get(opp.AccountId);
         }
         update oppsToUpdate;
     }
 
     public static void deleteOpportunities(List<Account> listOldAccounts) {
-        List<Opportunity> oppsToDelete = new List<Opportunity>([SELECT Id, Name, Amount, Account.Owner.FirstName, Account.Owner.Email FROM Opportunity WHERE AccountId IN: listOldAccounts]);
+        List<Opportunity> oppsToDelete = [SELECT Id, Name, Amount, Account.Owner.FirstName, Account.Owner.Email FROM Opportunity WHERE AccountId IN: listOldAccounts];
         Map<Id,User> mapOwners= new Map<Id,User>();
         Map<Id,List<String>> allOppsForEachAcc = new Map<Id,List<String>>();
         for (Opportunity opp : oppsToDelete) {
@@ -37,7 +37,8 @@ public with sharing class AccountService {
             if (!allOppsForEachAcc.containsKey(opp.AccountId)) {
                 allOppsForEachAcc.put(opp.AccountId, new List<String>());
             }
-            allOppsForEachAcc.get(opp.AccountId).add(String.format(System.Label.AllOpps, new List<Object>{(allOppsForEachAcc.get(opp.AccountId).size() + 1) , opp.Id, opp.Name, opp.Amount }));  
+            allOppsForEachAcc.get(opp.AccountId).add(
+                String.format(System.Label.AllOpps, new List<Object>{(allOppsForEachAcc.get(opp.AccountId).size() + 1) , opp.Id, opp.Name, opp.Amount }));  
         }
 
         List<Messaging.SingleEmailMessage> mailsToSend = new List<Messaging.SingleEmailMessage>();

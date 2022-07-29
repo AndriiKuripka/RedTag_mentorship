@@ -36,9 +36,9 @@ private class AccountTriggerHandlerTest{
 
         Test.StartTest();
             delete account;
+            System.assertEquals(0, [SELECT count() FROM Opportunity WHERE AccountId =:account.Id], 'Opportunity should be deleted');
+            System.assertEquals(1, Limits.getEmailInvocations(), 'Email should be sent');
         Test.StopTest();
 
-        System.assertEquals(0, [SELECT count() FROM Opportunity WHERE AccountId =:account.Id], 'Opportunity should be deleted');
-        System.assertEquals(1, Limits.getEmailInvocations(), 'Email should be sent');
     }
 }
