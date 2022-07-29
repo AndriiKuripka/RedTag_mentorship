@@ -16,6 +16,7 @@
         </inputParameters>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
+    <environments>Default</environments>
     <interviewLabel>Triger Flow on Account {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Triger Flow on Account</label>
     <processMetadataValues>

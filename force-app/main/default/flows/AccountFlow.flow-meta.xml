@@ -34,6 +34,7 @@
         </inputParameters>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
+    <environments>Default</environments>
     <formulas>
         <name>oppCloseDate</name>
         <dataType>Date</dataType>

@@ -1,23 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>EmailSending</name>
-        <label>EmailSending</label>
+        <name>SendAccountEmail</name>
+        <label>SendAccountEmail</label>
         <locationX>176</locationX>
-        <locationY>431</locationY>
-        <actionName>Account.accountDeletedEmailAlert</actionName>
-        <actionType>emailAlert</actionType>
+        <locationY>1007</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>OppDel</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>SObjectRowId</name>
+            <name>emailBody</name>
             <value>
-                <elementReference>OpporFromAcc.AccountId</elementReference>
+                <elementReference>BodyEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Owner.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>SubjectEmail</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
+    <assignments>
+        <name>CounterLoop</name>
+        <label>CounterLoop</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>Counter</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OpportunityLoop</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>CounterPlus1</name>
+        <label>CounterPlus1</label>
+        <locationX>264</locationX>
+        <locationY>671</locationY>
+        <assignmentItems>
+            <assignToReference>Counter</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>TextAssignment</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>TextAssignment</name>
+        <label>TextAssignment</label>
+        <locationX>264</locationX>
+        <locationY>791</locationY>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Counter</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Dot</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>OpportunityLoop.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Coma</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>OpportunityLoop.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Coma</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>OpportunityLoop.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextForBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>NewLine</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OpportunityLoop</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>NewLine</name>
+        <dataType>String</dataType>
+        <expression>BR()</expression>
+    </formulas>
     <interviewLabel>Triggered flow on acc {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Triggered flow on acc</label>
+    <label>Delete Flow Trigger on Account</label>
+    <loops>
+        <name>OpportunityLoop</name>
+        <label>OpportunityLoop</label>
+        <locationX>176</locationX>
+        <locationY>551</locationY>
+        <collectionReference>OpporFromAcc</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>CounterPlus1</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>SendAccountEmail</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -37,6 +169,13 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>OppDel</name>
+        <label>OppToDelete</label>
+        <locationX>176</locationX>
+        <locationY>1127</locationY>
+        <inputReference>OpporFromAcc</inputReference>
+    </recordDeletes>
     <recordLookups>
         <name>OpporFromAcc</name>
         <label>OpporFromAcc</label>
@@ -44,7 +183,7 @@
         <locationY>311</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>EmailSending</targetReference>
+            <targetReference>CounterLoop</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -54,7 +193,7 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Opportunity</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
@@ -68,21 +207,57 @@
         <recordTriggerType>Delete</recordTriggerType>
         <triggerType>RecordBeforeDelete</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
+    <textTemplates>
+        <name>BodyEmail</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!$Record.Owner.FirstName},
+Due to the deletion of Account {!$Record.Name} all next related Opportunities were deleted as well: 
+{!TextForBody} 
+Best regards,
+Red Tag Service Team</text>
+    </textTemplates>
+    <textTemplates>
+        <name>SubjectEmail</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Your Account ({!$Record.Name}) has been deleted</text>
+    </textTemplates>
     <variables>
-        <name>OppId</name>
-        <dataType>SObject</dataType>
+        <name>Coma</name>
+        <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>Opportunity</objectType>
+        <value>
+            <stringValue>, </stringValue>
+        </value>
     </variables>
     <variables>
-        <name>opporId</name>
-        <dataType>SObject</dataType>
+        <name>Counter</name>
+        <dataType>Number</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>Opportunity</objectType>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Dot</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>. </stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>TextForBody</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
 </Flow>
