@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Top 5 Opportunities Records">
+        <lightning-datatable 
+            key-field="Id"
+            columns={columns}
+            data={opportunities}
+            onrowaction={navigateToOpportunityPage}  
+            hide-checkbox-column="true">
+        </lightning-datatable>  
+    </lightning-card> 
+</template>
