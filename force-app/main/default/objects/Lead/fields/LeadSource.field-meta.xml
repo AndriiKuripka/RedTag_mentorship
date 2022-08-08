@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LeadSource</fullName>
+    <inlineHelpText>A lead source is the channel through which a lead has initially discovered your company</inlineHelpText>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Picklist</type>
 </CustomField>
