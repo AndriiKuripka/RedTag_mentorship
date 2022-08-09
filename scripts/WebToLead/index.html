@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Red Tag</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <form id="lead" class="form" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+            <img src="red_tag_logo.png">
+            <h1>Contact Us</h1>
+            <input type=hidden name="oid" value="00D7Q000009hTq6">
+            <input type=hidden name="retURL" value="https://www.sumydesigns.com/wp-content/uploads/2018/08/thank-you-page.jpg">
+            <div class="form-field">
+                <div class="required-field">
+                <label for="first_name">First Name </label>
+                </div>
+                <input  id="first_name" maxlength="25" name="first_name" type="text" />
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <div class="required-field">
+                <label for="last_name">Last Name </label>
+                </div>
+                <input  id="last_name" maxlength="25" name="last_name" type="text" />
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <div class="required-field">
+                <label for="email">Email </label>
+                </div>
+                <input type="email" name="email" id="email">
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <div class="required-field">
+                <label for="phone">Phone </label>
+                </div>
+                <input  id="phone" name="phone" type="number" />
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <div class="required-field">
+                <label for="interestedProduct">Interested Product: </label>
+                </div>
+                <select  id="00N7Q00000C8WR1" name="00N7Q00000C8WR1" title="Interested Product">
+                    <option value="Sales Cloud">Sales Cloud</option>
+                    <option value="Service Cloud">Service Cloud</option>
+                    <option value="Community Cloud">Community Cloud</option>
+                    <option value="Marketing Cloud">Marketing Cloud</option>
+                    <option value="Integration Cloud">Integration Cloud</option>
+                </select>
+                <small></small>
+            </div>
+
+            <div class="form-field">
+                <label for="questions">Questions:</label>
+                <textarea  id="00N7Q00000C8WRBUA3" name="00N7Q00000C8WRBUA3" rows="3" type="text" wrap="soft"></textarea>
+                <small></small>
+            </div>
+            <div class="form-field">
+                <input class="btn" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
