@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="BatchDeleteAllLeadsController">
+	<div class="slds-col slds-modal__header">
+        <h2 class="title slds-text-heading--medium">{!$Label.c.HeaderDelete}</h2>
+    </div>
+    <div class="slds-col slds-p-around--medium">
+        <p>{!$Label.c.ConfirmationMessageDelete}</p>
+    </div>
+    <div class="slds-col slds-modal__footer">        
+        <lightning:button variant="neutral" label="{!$Label.c.Cancel}" onclick="{!c.handleCancel}" />      
+        <lightning:button variant="brand" label="{!$Label.c.Ok}" onclick="{!c.handleSubmit}" />
+    </div>
+</aura:component>
