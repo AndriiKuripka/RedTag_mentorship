@@ -1,5 +1,5 @@
 <aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="BatchDeleteAllLeadsController">
-	<div class="slds-col slds-modal__header">
+    <div class="slds-col slds-modal__header">
         <h2 class="title slds-text-heading--medium">{!$Label.c.HeaderDelete}</h2>
     </div>
     <div class="slds-col slds-p-around--medium">
