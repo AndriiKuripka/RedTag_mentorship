@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Cancel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error</shortDescription>
+        <value>error</value>
+    </labels>
+    <labels>
+        <fullName>Ok</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Ok</shortDescription>
+        <value>OK</value>
+    </labels>
+    <labels>
+        <fullName>Success</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Success</shortDescription>
+        <value>success</value>
+    </labels>
+    <labels>
+        <fullName>SuccessMsg</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SuccessMsg</shortDescription>
+        <value>Successful success</value>
+    </labels>
+    <labels>
+        <fullName>SuccessTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SuccessTitle</shortDescription>
+        <value>GREAT SUCCESS!</value>
+    </labels>
+    <labels>
+        <fullName>ToastMode</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ToastMode</shortDescription>
+        <value>dismissible</value>
+    </labels>
+</CustomLabels>
