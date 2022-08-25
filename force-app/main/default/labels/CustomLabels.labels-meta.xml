@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AddProducts</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AddProducts</shortDescription>
+        <value>Add Products</value>
+    </labels>
+    <labels>
+        <fullName>AssignContr</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AssignContract</shortDescription>
+        <value>Assign Contract</value>
+    </labels>
+    <labels>
+        <fullName>ContractProgressIndicatorCaption</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ContractProgressIndicatorCaption</shortDescription>
+        <value>Contract PDF progress</value>
+    </labels>
+    <labels>
+        <fullName>FillCustomer</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>FillCustomer</shortDescription>
+        <value>Fill Customer Name</value>
+    </labels>
+    <labels>
+        <fullName>FillSeller</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>FillSeller</shortDescription>
+        <value>Fill Seller Company Name</value>
+    </labels>
+    <labels>
+        <fullName>FirstPdfPage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>FirstPdfPage</shortDescription>
+        <value>Contract between {customer} and {seller company}</value>
+    </labels>
+    <labels>
+        <fullName>GeneralTerms</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>GeneralTerms</shortDescription>
+        <value>General terms and conditions:</value>
+    </labels>
+    <labels>
+        <fullName>GeneralTermsBody1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>GeneralTermsBody1</shortDescription>
+        <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla dictum massa vitae cursus. Maecenas vitae iaculis nibh, sed accumsan neque. Mauris lacinia nec risus ac porta. Nam bibendum dui eu ante tristique volutpat. Nulla facilisi. Suspendisse venenatis eu urna non vulputate. Vivamus tempor vulputate metus, ut vestibulum purus iaculis in. Quisque ut fermentum arcu. Cras viverra arcu in risus euismod, ut elementum est feugiat. Sed mattis mi dolor, nec efficitur leo ullamcorper nec.</value>
+    </labels>
+    <labels>
+        <fullName>GeneralTermsBody2</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>GeneralTermsBody2</shortDescription>
+        <value>Proin nec lacus eleifend, porttitor diam at, pharetra justo. Ut nulla libero, facilisis at fringilla vitae, posuere sed neque. Etiam et sapien neque. Praesent fringilla justo eget leo accumsan, vitae consequat nunc euismod. Integer pulvinar, enim et lobortis blandit, neque nibh fermentum massa, nec ornare est tortor id leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. In rhoncus sit amet ex ac pharetra. Nam quam libero, suscipit in mi sit amet, ornare egestas diam. Aliquam in sapien nibh. Mauris in blandit lorem. Cras id arcu eu sem malesuada tincidunt at eu metus. Nam vestibulum leo dui, sed feugiat ligula rutrum at. Cras pulvinar purus et quam varius faucibus. Mauris vestibulum lorem sed mauris tempus auctor sed ut mauris.</value>
+    </labels>
+    <labels>
+        <fullName>GeneralTermsBody3</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>GeneralTermsBody3</shortDescription>
+        <value>Praesent urna ex, sollicitudin fermentum magna in, laoreet maximus lacus. Duis semper ligula quis dui rutrum aliquet. Sed lacinia, nisl id sagittis volutpat, augue nisl consequat odio, eget placerat nisl sem ut quam. In eget erat sapien. Sed venenatis lacus sed mi euismod fermentum. Sed lobortis ex id libero rhoncus dictum. Proin feugiat tincidunt ante, eget rhoncus nibh maximus at. Curabitur ac ipsum pellentesque, sollicitudin libero vitae, ultrices quam. Nam interdum nisl sit amet dapibus vestibulum. Suspendisse congue est nec nulla facilisis, ac pulvinar tellus pellentesque. Donec vel ornare ex, quis dictum velit. Nunc non hendrerit odio. Morbi eu arcu aliquet, laoreet ipsum rhoncus, tincidunt nisl. Quisque ligula turpis, cursus quis velit ut, placerat accumsan tellus.</value>
+    </labels>
+    <labels>
+        <fullName>GeneralTermsBody4</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>GeneralTermsBody4</shortDescription>
+        <value>Donec non faucibus sapien. Maecenas hendrerit tellus et ex elementum, in feugiat odio posuere. Quisque ut dui tellus. Morbi in odio lacinia arcu consectetur ullamcorper. Vestibulum ullamcorper vitae nibh non hendrerit. Vestibulum iaculis velit ac lacinia auctor. Sed tempor commodo ex, vel luctus arcu scelerisque vitae. Nam feugiat nisi dui, eu fermentum ante placerat id. Praesent porttitor metus id arcu iaculis tincidunt sed a lectus. Phasellus semper gravida vehicula. Aliquam hendrerit, felis sit amet cursus hendrerit, dui magna vulputate felis, non rutrum purus erat id lectus.</value>
+    </labels>
+    <labels>
+        <fullName>SignatureHeader</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SignatureHeader</shortDescription>
+        <value>Signature</value>
+    </labels>
+    <labels>
+        <fullName>SubjectPDF</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SubjectPDF</shortDescription>
+        <value>Subject of contract:</value>
+    </labels>
+    <labels>
+        <fullName>SuccessTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SuccessTitle</shortDescription>
+        <value>GREAT SUCCESS!</value>
+    </labels>
+</CustomLabels>
