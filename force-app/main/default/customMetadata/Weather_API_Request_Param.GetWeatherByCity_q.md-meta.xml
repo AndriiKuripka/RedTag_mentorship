@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>GetWeatherByCity_q</label>
+    <protected>false</protected>
+    <values>
+        <field>Entity_Definition__c</field>
+        <value xsi:type="xsd:string">Weather_Setting__c</value>
+    </values>
+    <values>
+        <field>Field_Definition__c</field>
+        <value xsi:type="xsd:string">City_Name__c</value>
+    </values>
+    <values>
+        <field>Param_Name__c</field>
+        <value xsi:type="xsd:string">q</value>
+    </values>
+    <values>
+        <field>Param_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Request_Name__c</field>
+        <value xsi:type="xsd:string">Get Weather by City</value>
+    </values>
+    <values>
+        <field>Weather_API__c</field>
+        <value xsi:type="xsd:string">Weather_API</value>
+    </values>
+</CustomMetadata>
