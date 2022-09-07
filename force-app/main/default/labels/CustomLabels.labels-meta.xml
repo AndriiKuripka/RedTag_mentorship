@@ -8,11 +8,46 @@
         <value>Cancel</value>
     </labels>
     <labels>
-        <fullName>Error</fullName>
+        <fullName>Cold</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Error</shortDescription>
-        <value>error</value>
+        <shortDescription>Cold</shortDescription>
+        <value>Cold</value>
+    </labels>
+    <labels>
+        <fullName>ConfirmationMessageDelete</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ConfirmationMessageDelete</shortDescription>
+        <value>Do you really want to remove all the Lead records from the database?</value>
+    </labels>
+    <labels>
+        <fullName>DelLeadsTemplateName</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DelLeadsTemplateName</shortDescription>
+        <value>AllLeadsDeleted</value>
+    </labels>
+    <labels>
+        <fullName>DeletionProcess</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DeletionProcess</shortDescription>
+        <value>This may take a while. You will receive an email once the deletion has finished</value>
+    </labels>
+    <labels>
+        <fullName>Domain</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Domain</shortDescription>
+        <value>@domail.com</value>
+    </labels>
+    <labels>
+        <fullName>HeaderDelete</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>HeaderDelete</shortDescription>
+        <value>Delete Cold Rating Records</value>
     </labels>
     <labels>
         <fullName>Ok</fullName>
@@ -22,6 +57,13 @@
         <value>OK</value>
     </labels>
     <labels>
+        <fullName>OpenStatus</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>OpenStatus</shortDescription>
+        <value>Open - Not Contacted</value>
+    </labels>
+    <labels>
         <fullName>Success</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -29,6 +71,35 @@
         <value>success</value>
     </labels>
     <labels>
+        <fullName>ToastTitleDelete</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ToastTitleDelete</shortDescription>
+        <value>Starting the deletion of all Lead records.</value>
+    </labels>
+    <labels>
+        <fullName>WebSource</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>WebSource</shortDescription>
+        <value>Web</value>
+    </labels>
+    <labels>
+        <fullName>test</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>test</shortDescription>
+        <value>test</value>
+    </labels>
+    
+     <labels>
+        <fullName>Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error</shortDescription>
+        <value>error</value>
+    </labels>
+     <labels>
         <fullName>SuccessMsg</fullName>
         <language>en_US</language>
         <protected>true</protected>
