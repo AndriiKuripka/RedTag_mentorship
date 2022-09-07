@@ -1,14 +1,19 @@
 public with sharing class WeatherAPIService {
-    public static WeatherWrapper getWeather(Weather_Setting__c setting){
+    public static HTTPResponse getWeather(Weather_Setting__c setting){
         Http httpClient = new Http();
         HttpRequest req = new HttpRequest();
         req.setMethod('GET');
         String url = urlReturn('Weather_API', setting);
         req.setEndpoint(url);
-        HTTPResponse res = httpClient.send(req);
-        WeatherWrapper wr = WeatherWrapper.parseJSON(res.getBody());
-        System.debug(wr);
-        return wr;
+        HttpResponse res = null;
+        try{
+            res = httpClient.send(req);
+            return res;
+        }
+        catch(Exception e){
+            System.debug('error '+e);
+        }
+        return res;
     }
 
     public static String urlReturn(String requestName, Weather_Setting__c setting){
@@ -21,7 +26,7 @@ public with sharing class WeatherAPIService {
         ];
         String returnUrlEndpoint = weatherApi.Endpoint__c;
         List<String> params = new List<String>();
-        System.debug(setting);
+
         for (Weather_API_Request_Param__mdt param : weatherApi.Weather_API_Request_Params__r) {
             String urlParamValue = '';
             if (String.isNotBlank(param.Param_Value__c)) {
@@ -35,15 +40,3 @@ public with sharing class WeatherAPIService {
         return returnUrlEndpoint;
     }
 }
-/*
-List<String> csvRows = new List<String>();
-        SObjectType objType = Schema.getGlobalDescribe().get('Weather_Setting__c');
-        Schema.DescribeSObjectResult r = objType.getDescribe();
-        Map<String,Schema.SObjectField> fields = r.fields.getMap();
-        for(String fieldName : r.fields.getMap().keySet()){
-            Schema.DescribeFieldResult F = fields.get(fieldName).getDescribe();
-            if(F.isCustom())
-                csvRows.add(fieldName);
-        }
-        
-        */

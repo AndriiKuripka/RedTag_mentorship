@@ -3,32 +3,32 @@ private with sharing class BatchGetWeatherTest {
     @TestSetup
     static void makeData(){
         Weather_Setting__c ws = new Weather_Setting__c(
-                City_Name__c = 'Mountain View',
-                Language__c = 'US'
+                City_Name__c = 'Osaka',
+                Language__c = 'EN'
             );
         insert ws;
-
-        Weather__c Weather = new Weather__c(City_Name__c = 'Lviv', Name = 'Lviv Weather');
-        insert Weather;
     }
 
     @isTest
     private static void executeBatchTest(){
         Test.setMock(HttpCalloutMock.class, new WeatherAPIServiceCalloutMock());
-        System.assertEquals(null, [SELECT Temperature__c FROM Weather__c].Temperature__c, 'data has not been updated');
 
+        Integer num = [SELECT count() FROM Weather__c];
+        System.assertEquals(0, num, 'data has not been updated');        
         Test.startTest();
-        ScheduledWeatherUpdate m = new ScheduledWeatherUpdate();
-        String sch = '0 0 0 ? * * 2045';
-        String jobID = system.schedule('Merge Job', sch, m);
-        m.execute(null);
+        ScheduledWeatherUpdate scw = new ScheduledWeatherUpdate();
+        scw.execute(null);
         Test.stopTest();
-        System.assertNotEquals(null, [SELECT Temperature__c FROM Weather__c].Temperature__c, 'data is updated');
+
+        num = [SELECT count() FROM Weather__c];
+        System.assertNotEquals(0, num, 'Data was successfully updated');
     }
 
-    @isTest
-    public static void WeatherBatchTestByStaticResource() {
-        System.assertEquals(null, [SELECT Temperature__c FROM Weather__c].Temperature__c, 'data has not been updated');
+   @isTest
+    public static void weatherBatchTestByStaticResource() {
+        Integer num = [SELECT count() FROM Weather__c];
+        System.assertEquals(0, num, 'data has not been updated'); 
+        
         StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
         mock.setStaticResource('GetWeatherResourse');
         mock.setStatusCode(200);
@@ -38,11 +38,10 @@ private with sharing class BatchGetWeatherTest {
         
         Test.startTest();
         ScheduledWeatherUpdate m = new ScheduledWeatherUpdate();
-        String sch = '0 0 0 ? * * 2045';
-        String jobID = system.schedule('Merge Job', sch, m);
         m.execute(null);
         Test.stopTest();
         
-        System.assertNotEquals(null, [SELECT Temperature__c FROM Weather__c].Temperature__c, 'Data was successfully updated');
+        num = [SELECT count() FROM Weather__c];
+        System.assertNotEquals(0, num, 'Data was successfully updated');
     }
 }
