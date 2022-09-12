@@ -8,7 +8,7 @@
 		>
 		</lightning-map>
 
-		<lightning-tabset>
+		<lightning-tabset if:true={currentCity}>
 			<lightning-tab label="Today weather">
 				<lightning-layout class="slds-m-left_small" multiple-rows="true">
 					<template if:true={weather}>

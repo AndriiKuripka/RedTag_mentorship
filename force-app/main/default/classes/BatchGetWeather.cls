@@ -1,18 +1,10 @@
 public class BatchGetWeather implements Database.Stateful, Database.Batchable<sObject>, Database.AllowsCallouts  {
 
     public Database.QueryLocator start(Database.BatchableContext bc) {
-        String SobjectApiName = 'Weather_Setting__c';
-        Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
-        Map<String, Schema.SObjectField> fieldMap = schemaMap.get(SobjectApiName).getDescribe().fields.getMap();
-        List<String>apiNames =  new List<String>();
-
-        for(String apiName : fieldMap.keyset()) {
-           if(fieldMap.get(apiName).getDescribe().isCustom()) {
-              apiNames.add(apiName);
-           }
-        }
+        Map<String, Schema.SObjectField> fieldMap = Weather_Setting__c.sObjectType.getDescribe().fields.getMap();
+        List<String>apiNames =  new List<String>(fieldMap.keySet());
         String allString = String.join(apiNames,',');
-        String query = 'SELECT ' + allstring + ' FROM ' + SobjectApiName;
+        String query = 'SELECT ' + allstring + ' FROM Weather_Setting__c';
         return Database.getQueryLocator(query);
     }
 
