@@ -91,4 +91,33 @@
         <shortDescription>test</shortDescription>
         <value>test</value>
     </labels>
+    
+     <labels>
+        <fullName>Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error</shortDescription>
+        <value>error</value>
+    </labels>
+     <labels>
+        <fullName>SuccessMsg</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SuccessMsg</shortDescription>
+        <value>Successful success</value>
+    </labels>
+    <labels>
+        <fullName>SuccessTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SuccessTitle</shortDescription>
+        <value>GREAT SUCCESS!</value>
+    </labels>
+    <labels>
+        <fullName>ToastMode</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ToastMode</shortDescription>
+        <value>dismissible</value>
+    </labels>
 </CustomLabels>
