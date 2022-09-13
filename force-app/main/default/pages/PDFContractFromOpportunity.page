@@ -1,0 +1,149 @@
+<apex:page applyHtmlTag="false"
+           sidebar="false" 
+           showHeader="false"
+           renderAs="pdf"
+           standardStylesheets="false"
+           extensions="PDFContractFromOpportunityExtension"
+           standardController="Opportunity">
+    <html>
+        <head>
+            <style>
+                @page {
+                    size: A4;
+                    margin-top: 2cm;
+                    margin-bottom: 2cm;
+                    margin-left: 3cm;
+                    margin-right: 3cm;
+
+                    @top-center {
+                        content: element(header);
+                    }
+                    @bottom-left {
+                        content: element(footer);
+                    }
+                    @top-right {
+                        content: element(top-right-div); 
+                    }
+
+                    @top-left {
+                        content: element(top-left-div);
+                    }
+                }
+                div.header {
+                    position: running(header);
+                }
+                div.footer {
+                    display: block;
+                    position: running(footer);
+                    text-align: center;
+                }
+ 
+                .pagenumber:before {
+                    content: counter(page);
+                }
+                .pagecount:before {
+                    content: counter(pages);
+                }
+                .top-right-div{
+                    position: running(top-right-div);
+                    text-align: right;
+                }
+                .top-left-div{
+                    position: running(top-left-div);
+                    text-align: left;
+                }
+                .page-break {
+                    page-break-before:always;
+                }
+                .page-break:first-child {
+                    page-break-before: avoid;
+                }
+                .front-page{
+                    position:absolute;
+                    text-align: center;
+                    top:10%;
+                }
+                .signature-left{
+                    float:left;
+                    margin-left:50px;
+                }
+                .signature-right{
+                    float:right;
+                    margin-right:50px;
+                }
+                .border{
+                    text-align: left;
+                    border:0.8px solid black;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="top-right-div">
+                <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                    <apex:param value="{!NOW()}" />
+                </apex:outputText>
+            </div>
+            <div class="top-left-div">
+                <apex:image id="logo1" value="https://curious-bear-krr9u-dev-ed.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=0687Q000003giil&operationContext=DELIVERY&contentId=05T7Q00000G7bUp&page=0&d=/a/7Q0000008TV6/gwn1FFxBgyQrRxRwm6u902HRaQwiWSNbX0cc3du.Dk8&oid=00D7Q000009hTq6&dpt=null&viewId=" width="200" height="100%" alt="RedTag Logo" /> 
+            </div>
+            <div class="footer">
+                <hr />
+                <div>
+                    Page <span class="pagenumber"/> of <span class="pagecount"/>
+                </div>
+            </div>
+            <div class="front-page">
+                <h1>{!firstPdfPageFormated}</h1>
+            </div>
+            <div class="page-break">
+                <div class="content">
+                    <h2>{!$Label.GeneralTerms}</h2>
+                    <ol>
+                        <li>
+                            {!$Label.GeneralTermsBody1}
+                        </li>
+                        <li>
+                            {!$Label.GeneralTermsBody2}
+                        </li>
+                        <li>
+                            {!$Label.GeneralTermsBody3}
+                        </li>
+                        <li>
+                            {!$Label.GeneralTermsBody4}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="page-break">
+                <div class="content">
+                    <apex:pageBlock >
+                        <h2>{!$Label.SubjectPDF}</h2>
+                      <apex:pageBlockTable styleClass="table" value="{!products}" var="prod" headerClass="border" footerClass="border" columnClasses="border" style="table-layout:fixed">
+                            <apex:column headerClass="head" styleClass="td" value="{!prod.Name}" />
+                            <apex:column headerClass="head" styleClass="td" value="{!prod.Quantity}" />
+                            <apex:column headerClass="head" styleClass="td" value="{!prod.TotalPrice}" />
+                        </apex:pageBlockTable> 
+                    </apex:pageBlock>
+                </div>
+            </div> 
+
+            <div class="signature-left">
+                <h3>{!$Label.SignatureHeader}</h3>
+                <p>________________________________</p>
+                <p>________________________________</p>
+                <p>________________________________</p>
+                {!customerName}
+            </div>
+            <div style="signature-right">
+                <br/>
+                <br/>
+                <p>_________________________________</p>
+                <p>_________________________________</p>
+                <p>_________________________________</p>
+                {!sellerCompanyName}
+            </div>
+
+        </body>
+    </html>
+</apex:page>
