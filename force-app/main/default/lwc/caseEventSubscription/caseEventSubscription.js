@@ -4,10 +4,11 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import USER_ID from '@salesforce/user/Id';
 import INTRO from '@salesforce/resourceUrl/Intro';
 
+const channelName = '/event/Case_Event__e';
+
 export default class CaseEventSubscription extends LightningElement {
     @api recordId;
     subscription = {}
-    channelName = '/event/Case_Event__e';
     
     connectedCallback(){
         console.clear();
@@ -32,7 +33,7 @@ export default class CaseEventSubscription extends LightningElement {
             }
         };  
 
-        subscribe(this.channelName, -1, messageCallback)
+        subscribe(channelName, -1, messageCallback)
         .then(response => {
             this.subscription = response;
         })
