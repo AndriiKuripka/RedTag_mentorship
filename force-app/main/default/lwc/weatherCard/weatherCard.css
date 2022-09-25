@@ -1,0 +1,6 @@
+.weather-tile{
+    display: block;
+    border: 2px solid rgb(18, 216, 91);
+    border-radius: 5px;
+    color: black;
+}
