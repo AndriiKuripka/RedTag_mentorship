@@ -1,0 +1,51 @@
+<template>
+      <div class={columnSize}>
+       <div class="slds-card">
+         <lightning-input if:true={isCheckBoxVisible} type="checkbox" onchange={handleCheckBoxChange} label="Show all"></lightning-input>
+         <div class="body" style="height: 100vh">
+         <lightning-datatable
+             key-field="id" 
+             data={data} 
+             columns={columns}
+             onrowaction={showRecordDetail}
+             hide-checkbox-column="true"
+             >
+          </lightning-datatable>
+         </div>
+       </div>
+      </div>
+       <div class={columnSize} if:true={spinner}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+       </div>
+       <div class={columnSize} if:true={isSelected}>
+       <div class='slds-p-left_medium'>
+          <lightning-record-view-form
+             object-api-name='Case'
+             record-id={caseId}
+             >
+             <div class="slds-card">
+                <div class="slds-card__header slds-grid">
+                   <header class="slds-media slds-media_center slds-has-flexi-truncate slds-border_bottom">
+                      <div class="slds-card__header-title slds-p-bottom_medium slds-size_1-of-2">
+                         <h2>Case details</h2>
+                      </div>
+                      <div class="slds-p-bottom_medium slds-size_1-of-2">
+                         <button class="slds-button slds-button_neutral slds-float_right slds-button_text-destructive" onclick={closeDetails}>✕</button>
+                      </div>
+                   </header>
+                </div>
+                <div class="slds-media__body slds-grid">
+                   <div class="slds-p-around_small slds-size_1-of-2">
+                    <lightning-output-field class="slds-border_bottom" field-name="Subject"></lightning-output-field>
+                    <lightning-output-field class="slds-border_bottom" field-name="CaseNumber"></lightning-output-field>
+                    <lightning-output-field class="slds-border_bottom" field-name="Type"></lightning-output-field>
+                    <lightning-output-field class="slds-border_bottom" field-name="Status"></lightning-output-field>
+                    <lightning-output-field class="slds-border_bottom" field-name="BranchNumber__c"></lightning-output-field>
+                    <lightning-output-field class="slds-border_bottom" field-name="CreatedDate"></lightning-output-field>
+                   </div>
+                </div>
+             </div>
+          </lightning-record-view-form>
+       </div>
+    </div>
+ </template>
