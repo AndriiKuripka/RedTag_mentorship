@@ -18,7 +18,9 @@ public class BatchGetWeather implements Database.Stateful, Database.Batchable<sO
                 weathersToInsert.add(wr.parseToWeather());
             }
         }
-        insert weathersToInsert;
+        if (weathersToInsert.size()>0){
+            insert weathersToInsert;
+        }
     }
 
     public void finish(Database.BatchableContext bc){
